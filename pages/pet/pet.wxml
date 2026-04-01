@@ -49,32 +49,28 @@
     </view>
     <view class="moments-list" wx:else>
       <view class="moment-card" wx:for="{{moments}}" wx:key="id">
+        <view class="moment-title" wx:if="{{item.title}}">{{item.title}}</view>
         <view class="moment-content" wx:if="{{item.content}}">{{item.content}}</view>
-        <view class="moment-photos" wx:if="{{item.photos && item.photos.length > 0}}">
+        <view class="moment-media" wx:if="{{item.media_path}}">
           <image 
+            wx:if="{{item.media_type && item.media_type.startsWith('image')}}"
             class="moment-photo" 
-            wx:for="{{item.photos}}" 
-            wx:for-item="photo"
-            wx:for-index="photoIndex"
-            wx:key="*this"
-            src="{{photo}}" 
+            src="http://47.102.128.76:8888{{item.media_path}}" 
             mode="aspectFill"
           />
-        </view>
-        <view class="moment-videos" wx:if="{{item.videos && item.videos.length > 0}}">
           <video 
+            wx:else
             class="moment-video" 
-            wx:for="{{item.videos}}" 
-            wx:for-item="video"
-            wx:for-index="videoIndex"
-            wx:key="*this"
-            src="{{video}}"
+            src="http://47.102.128.76:8888{{item.media_path}}"
             controls
           />
         </view>
         <view class="moment-footer">
-          <text class="moment-time">{{item.createdAt}}</text>
+          <text class="moment-time">{{item.created_at}}</text>
           <view class="moment-actions">
+            <view class="action-item" data-id="{{item.id}}" bindtap="deleteMoment">
+              <text class="action-icon">🗑️</text>
+            </view>
             <view class="action-item" data-id="{{item.id}}" bindtap="likeMoment">
               <text class="action-icon">❤️</text>
               <text class="action-count">{{item.likes || 0}}</text>

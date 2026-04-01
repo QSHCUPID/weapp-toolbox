@@ -1,8 +1,20 @@
 <view class="container">
   <view class="content-section">
+    <view class="input-label">标题</view>
+    <input 
+      class="title-input" 
+      placeholder="给动态起个标题吧..." 
+      value="{{title}}"
+      bindinput="inputTitle"
+      maxlength="50"
+    />
+  </view>
+  
+  <view class="content-section">
+    <view class="input-label">内容</view>
     <textarea 
       class="content-input" 
-      placeholder="分享棠棠的可爱瞬间..." 
+      placeholder="记录棠棠的可爱瞬间..." 
       value="{{content}}"
       bindinput="inputContent"
       maxlength="500"
@@ -12,29 +24,20 @@
   </view>
   
   <view class="media-section">
-    <view class="section-title">照片</view>
-    <view class="photo-grid">
-      <view class="photo-item" wx:for="{{photos}}" wx:key="*this">
-        <image src="{{item}}" class="photo-img" mode="aspectFill" />
-        <view class="photo-remove" data-index="{{index}}" bindtap="removePhoto">×</view>
-      </view>
-      <view class="photo-add" wx:if="{{photos.length < 9}}" bindtap="chooseImage">
-        <text class="add-icon">+</text>
-        <text class="add-text">添加照片</text>
-      </view>
+    <view class="section-title">照片/视频</view>
+    <view class="media-preview" wx:if="{{tempMediaPath}}">
+      <image wx:if="{{tempMediaType === 'image'}}" src="{{tempMediaPath}}" class="preview-img" mode="aspectFill" />
+      <video wx:else src="{{tempMediaPath}}" class="preview-video" controls />
+      <view class="remove-media" bindtap="removeMedia">×</view>
     </view>
-  </view>
-  
-  <view class="media-section">
-    <view class="section-title">视频</view>
-    <view class="video-list">
-      <view class="video-item" wx:for="{{videos}}" wx:key="*this">
-        <video src="{{item}}" class="video-preview" controls />
-        <view class="video-remove" data-index="{{index}}" bindtap="removeVideo">×</view>
+    <view class="media-choices" wx:else>
+      <view class="choice-item" bindtap="chooseImage">
+        <text class="choice-icon">📷</text>
+        <text class="choice-text">添加照片</text>
       </view>
-      <view class="video-add" wx:if="{{videos.length < 3}}" bindtap="chooseVideo">
-        <text class="add-icon">+</text>
-        <text class="add-text">添加视频</text>
+      <view class="choice-item" bindtap="chooseVideo">
+        <text class="choice-icon">🎬</text>
+        <text class="choice-text">添加视频</text>
       </view>
     </view>
   </view>

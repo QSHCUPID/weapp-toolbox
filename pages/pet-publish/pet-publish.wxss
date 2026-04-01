@@ -11,6 +11,19 @@
   margin-bottom: 30rpx;
 }
 
+.input-label {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 15rpx;
+}
+
+.title-input {
+  width: 100%;
+  font-size: 32rpx;
+  padding: 15rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
 .content-input {
   width: 100%;
   min-height: 200rpx;
@@ -39,28 +52,22 @@
   margin-bottom: 30rpx;
 }
 
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20rpx;
-}
-
-.photo-item {
+.media-preview {
   position: relative;
-  width: 100%;
-  padding-bottom: 100%;
 }
 
-.photo-img {
-  position: absolute;
-  top: 0;
-  left: 0;
+.preview-img {
   width: 100%;
-  height: 100%;
+  max-height: 600rpx;
   border-radius: 12rpx;
 }
 
-.photo-remove {
+.preview-video {
+  width: 100%;
+  border-radius: 12rpx;
+}
+
+.remove-media {
   position: absolute;
   top: -10rpx;
   right: -10rpx;
@@ -75,66 +82,31 @@
   z-index: 10;
 }
 
-.photo-add,
-.video-add {
+.media-choices {
+  display: flex;
+  gap: 20rpx;
+}
+
+.choice-item {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 50rpx 20rpx;
   border: 2rpx dashed #ddd;
-  border-radius: 12rpx;
-  padding-bottom: 100%;
-  position: relative;
+  border-radius: 16rpx;
+  background: #fafafa;
 }
 
-.photo-add .add-icon,
-.video-add .add-icon {
+.choice-icon {
   font-size: 60rpx;
-  color: #999;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -70%);
+  margin-bottom: 15rpx;
 }
 
-.photo-add .add-text,
-.video-add .add-text {
-  font-size: 24rpx;
-  color: #999;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 30%);
-}
-
-.video-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20rpx;
-}
-
-.video-item {
-  position: relative;
-}
-
-.video-preview {
-  width: 100%;
-  border-radius: 12rpx;
-}
-
-.video-remove {
-  position: absolute;
-  top: -10rpx;
-  right: -10rpx;
-  width: 50rpx;
-  height: 50rpx;
-  background: #ff4d4f;
-  color: white;
-  border-radius: 50%;
-  font-size: 36rpx;
-  line-height: 46rpx;
-  text-align: center;
-  z-index: 10;
+.choice-text {
+  font-size: 26rpx;
+  color: #666;
 }
 
 .publish-section {

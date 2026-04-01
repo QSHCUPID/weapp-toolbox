@@ -154,6 +154,13 @@
   box-shadow: 0 4rpx 20rpx rgba(139, 69, 19, 0.1);
 }
 
+.moment-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #4e342e;
+  margin-bottom: 15rpx;
+}
+
 .moment-content {
   font-size: 30rpx;
   line-height: 1.6;
@@ -161,34 +168,14 @@
   margin-bottom: 20rpx;
 }
 
-.moment-photos {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10rpx;
+.moment-media {
   margin-bottom: 20rpx;
 }
 
 .moment-photo {
   width: 100%;
-  padding-bottom: 100%;
-  position: relative;
+  max-height: 600rpx;
   border-radius: 12rpx;
-  overflow: hidden;
-}
-
-.moment-photo image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.moment-videos {
-  display: flex;
-  flex-direction: column;
-  gap: 20rpx;
-  margin-bottom: 20rpx;
 }
 
 .moment-video {

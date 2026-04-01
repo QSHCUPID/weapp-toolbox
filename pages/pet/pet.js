@@ -1,4 +1,4 @@
-const API_BASE = 'http://47.102.128.76:8889/api/pet';
+const API_BASE = 'http://47.102.128.76:8888/api';
 
 Page({
   data: {
@@ -23,10 +23,7 @@ Page({
   loadData() {
     wx.showLoading({ title: '加载中...' });
     
-    Promise.all([
-      this.loadStats(),
-      this.loadMoments()
-    ]).then(() => {
+    this.loadMoments().then(() => {
       wx.hideLoading();
     }).catch(() => {
       wx.hideLoading();
@@ -34,30 +31,38 @@ Page({
     });
   },
 
-  loadStats() {
-    return new Promise((resolve, reject) => {
-      wx.request({
-        url: `${API_BASE}/stats`,
-        method: 'GET',
-        success: (res) => {
-          this.setData({ stats: res.data });
-          resolve();
-        },
-        fail: (err) => {
-          console.error('加载统计失败', err);
-          reject(err);
-        }
-      });
-    });
-  },
-
   loadMoments() {
     return new Promise((resolve, reject) => {
       wx.request({
-        url: `${API_BASE}/moments`,
+        url: `${API_BASE}/pet-posts`,
         method: 'GET',
         success: (res) => {
-          this.setData({ moments: res.data.moments });
+          const posts = res.data;
+          
+          let photoCount = 0;
+          let videoCount = 0;
+          let totalLikes = 0;
+          
+          posts.forEach(post => {
+            if (post.media_path) {
+              if (post.media_type && post.media_type.startsWith('image')) {
+                photoCount++;
+              } else if (post.media_type && post.media_type.startsWith('video')) {
+                videoCount++;
+              }
+            }
+            totalLikes += post.likes || 0;
+          });
+          
+          this.setData({
+            moments: posts,
+            stats: {
+              totalPosts: posts.length,
+              photos: photoCount,
+              videos: videoCount,
+              likes: totalLikes
+            }
+          });
           resolve();
         },
         fail: (err) => {
@@ -77,10 +82,30 @@ Page({
   likeMoment(e) {
     const id = e.currentTarget.dataset.id;
     wx.request({
-      url: `${API_BASE}/moments/${id}/like`,
-      method: 'POST',
+      url: `${API_BASE}/pet-posts/${id}/like`,
+      method: 'PUT',
       success: () => {
         this.loadMoments();
+      }
+    });
+  },
+
+  deleteMoment(e) {
+    const id = e.currentTarget.dataset.id;
+    wx.showModal({
+      title: '确认删除',
+      content: '确定要删除这条动态吗？',
+      success: (res) => {
+        if (res.confirm) {
+          wx.request({
+            url: `${API_BASE}/pet-posts/${id}`,
+            method: 'DELETE',
+            success: () => {
+              wx.showToast({ title: '删除成功', icon: 'success' });
+              this.loadMoments();
+            }
+          });
+        }
       }
     });
   },
