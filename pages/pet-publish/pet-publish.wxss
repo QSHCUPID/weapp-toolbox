@@ -1,0 +1,153 @@
+.container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 30rpx;
+}
+
+.content-section {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.content-input {
+  width: 100%;
+  min-height: 200rpx;
+  font-size: 32rpx;
+  line-height: 1.6;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 20rpx;
+}
+
+.media-section {
+  background: white;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30rpx;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+}
+
+.photo-item {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+.photo-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
+}
+
+.photo-remove {
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  width: 50rpx;
+  height: 50rpx;
+  background: #ff4d4f;
+  color: white;
+  border-radius: 50%;
+  font-size: 36rpx;
+  line-height: 46rpx;
+  text-align: center;
+  z-index: 10;
+}
+
+.photo-add,
+.video-add {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx dashed #ddd;
+  border-radius: 12rpx;
+  padding-bottom: 100%;
+  position: relative;
+}
+
+.photo-add .add-icon,
+.video-add .add-icon {
+  font-size: 60rpx;
+  color: #999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -70%);
+}
+
+.photo-add .add-text,
+.video-add .add-text {
+  font-size: 24rpx;
+  color: #999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 30%);
+}
+
+.video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.video-item {
+  position: relative;
+}
+
+.video-preview {
+  width: 100%;
+  border-radius: 12rpx;
+}
+
+.video-remove {
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  width: 50rpx;
+  height: 50rpx;
+  background: #ff4d4f;
+  color: white;
+  border-radius: 50%;
+  font-size: 36rpx;
+  line-height: 46rpx;
+  text-align: center;
+  z-index: 10;
+}
+
+.publish-section {
+  margin-top: 60rpx;
+}
+
+.publish-btn {
+  width: 100%;
+  height: 100rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 36rpx;
+  font-weight: 600;
+  border-radius: 50rpx;
+  border: none;
+}

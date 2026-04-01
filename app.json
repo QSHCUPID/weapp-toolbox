@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/calculator/calculator",
-    "pages/pet/pet"
+    "pages/pet/pet",
+    "pages/pet-publish/pet-publish"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -34,13 +34,54 @@
     </view>
   </view>
   
+  <view class="publish-btn-section">
+    <button class="publish-btn" bindtap="goToPublish">
+      <text class="btn-icon">✨</text>
+      <text>发布新动态</text>
+    </button>
+  </view>
+  
   <view class="moments-section">
     <view class="section-title">可爱瞬间</view>
     <view class="empty-state" wx:if="{{moments.length === 0}}">
       <text class="empty-icon">🐾</text>
-      <text class="empty-text">加载中...</text>
+      <text class="empty-text">还没有动态，快去发布第一条吧～</text>
     </view>
     <view class="moments-list" wx:else>
+      <view class="moment-card" wx:for="{{moments}}" wx:key="id">
+        <view class="moment-content" wx:if="{{item.content}}">{{item.content}}</view>
+        <view class="moment-photos" wx:if="{{item.photos && item.photos.length > 0}}">
+          <image 
+            class="moment-photo" 
+            wx:for="{{item.photos}}" 
+            wx:for-item="photo"
+            wx:for-index="photoIndex"
+            wx:key="*this"
+            src="{{photo}}" 
+            mode="aspectFill"
+          />
+        </view>
+        <view class="moment-videos" wx:if="{{item.videos && item.videos.length > 0}}">
+          <video 
+            class="moment-video" 
+            wx:for="{{item.videos}}" 
+            wx:for-item="video"
+            wx:for-index="videoIndex"
+            wx:key="*this"
+            src="{{video}}"
+            controls
+          />
+        </view>
+        <view class="moment-footer">
+          <text class="moment-time">{{item.createdAt}}</text>
+          <view class="moment-actions">
+            <view class="action-item" data-id="{{item.id}}" bindtap="likeMoment">
+              <text class="action-icon">❤️</text>
+              <text class="action-count">{{item.likes || 0}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
     </view>
   </view>
 </view>

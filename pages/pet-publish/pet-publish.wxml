@@ -1,0 +1,45 @@
+<view class="container">
+  <view class="content-section">
+    <textarea 
+      class="content-input" 
+      placeholder="分享棠棠的可爱瞬间..." 
+      value="{{content}}"
+      bindinput="inputContent"
+      maxlength="500"
+      auto-height
+    />
+    <view class="char-count">{{content.length}}/500</view>
+  </view>
+  
+  <view class="media-section">
+    <view class="section-title">照片</view>
+    <view class="photo-grid">
+      <view class="photo-item" wx:for="{{photos}}" wx:key="*this">
+        <image src="{{item}}" class="photo-img" mode="aspectFill" />
+        <view class="photo-remove" data-index="{{index}}" bindtap="removePhoto">×</view>
+      </view>
+      <view class="photo-add" wx:if="{{photos.length < 9}}" bindtap="chooseImage">
+        <text class="add-icon">+</text>
+        <text class="add-text">添加照片</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="media-section">
+    <view class="section-title">视频</view>
+    <view class="video-list">
+      <view class="video-item" wx:for="{{videos}}" wx:key="*this">
+        <video src="{{item}}" class="video-preview" controls />
+        <view class="video-remove" data-index="{{index}}" bindtap="removeVideo">×</view>
+      </view>
+      <view class="video-add" wx:if="{{videos.length < 3}}" bindtap="chooseVideo">
+        <text class="add-icon">+</text>
+        <text class="add-text">添加视频</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="publish-section">
+    <button class="publish-btn" bindtap="publish">发布动态</button>
+  </view>
+</view>
