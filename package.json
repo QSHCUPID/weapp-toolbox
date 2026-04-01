@@ -1,0 +1,11 @@
+{
+  "name": "weapp-toolbox",
+  "version": "1.0.0",
+  "description": "工具大集合微信小程序",
+  "scripts": {
+    "upload": "node upload.js"
+  },
+  "devDependencies": {
+    "miniprogram-ci": "^1.9.0"
+  }
+}
