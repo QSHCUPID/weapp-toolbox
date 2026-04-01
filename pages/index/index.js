@@ -9,6 +9,13 @@ Page({
         path: '/pages/calculator/calculator'
       },
       {
+        id: 'pet',
+        name: '棠棠成长日记',
+        icon: '🐕',
+        description: '记录毛茸茸的每一天',
+        path: '/pages/pet/pet'
+      },
+      {
         id: 'todo',
         name: '待办清单',
         icon: '📝',

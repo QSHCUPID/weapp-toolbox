@@ -1,0 +1,46 @@
+<view class="container">
+  <view class="header">
+    <view class="title-area">
+      <text class="emoji">🐕</text>
+      <text class="title">棠棠成长日记</text>
+    </view>
+    <text class="subtitle">记录毛茸茸的每一天</text>
+    <text class="description">分享可爱、温馨、快乐的瞬间 ✨</text>
+  </view>
+  
+  <view class="stats-section">
+    <view class="stats-title">成长统计</view>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-icon">📸</text>
+        <text class="stat-number">{{stats.totalPosts}}</text>
+        <text class="stat-label">总动态数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-icon">🖼️</text>
+        <text class="stat-number">{{stats.photos}}</text>
+        <text class="stat-label">照片数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-icon">🎬</text>
+        <text class="stat-number">{{stats.videos}}</text>
+        <text class="stat-label">视频数</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-icon">❤️</text>
+        <text class="stat-number">{{stats.likes}}</text>
+        <text class="stat-label">获赞数</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="moments-section">
+    <view class="section-title">可爱瞬间</view>
+    <view class="empty-state" wx:if="{{moments.length === 0}}">
+      <text class="empty-icon">🐾</text>
+      <text class="empty-text">加载中...</text>
+    </view>
+    <view class="moments-list" wx:else>
+    </view>
+  </view>
+</view>
